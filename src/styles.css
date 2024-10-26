@@ -1,71 +1,109 @@
 .carousel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative; /* Added for positioning buttons */
+}
+
+.previous-button,
+.next-button {
+  position: absolute; /* Changed from fixed to absolute */
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: black;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  z-index: 1; /* Ensure buttons are above images */
+}
+
+.arrow {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.next-button {
+  right: 10px; /* Adjusted for smaller screens */
+}
+
+.previous-button {
+  left: 10px; /* Adjusted for smaller screens */
+}
+
+.container2 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden; /* Prevents overflow of images */
+}
+
+img {
+  height: auto; /* Allow height to adjust */
+  width: 100%; /* Full width for responsiveness */
+  max-width: 700px; /* Limit max width */
+}
+
+h1 {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.carousel-image {
+  position: relative;
+  animation: rotate 10s linear infinite;
+  transform-origin: right center;
+}
+
+@keyframes rotate {
+  0% {
+      transform: rotateY(0deg);
   }
-  
+  100% {
+      transform: rotateY(360deg);
+  }
+}
+
+.audio-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Media Queries for Additional Responsiveness */
+@media (max-width: 768px) {
   .previous-button,
   .next-button {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: black;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
   }
-  
+
   .arrow {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
+      font-size: 18px; /* Smaller arrow size */
   }
-  
-  .next-button {
-    right: 100px;
-  }
-  
-  .previous-button {
-    left: 100px;
-  }
-  
-  .container2 {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  
+
   img {
-    height: 600px;
-    width: 700px;
+      max-height: 400px; /* Limit height for smaller screens */
   }
-  
-  h1 {
-    text-align: center;
-    font-family: Arial;
+}
+
+@media (max-width: 480px) {
+  .previous-button,
+  .next-button {
+      width: 25px;
+      height: 25px;
+      font-size: 16px;
   }
-  
-  .carousel-image {
-    position: relative;
-    animation: rotate 10s linear infinite;
-    transform-origin: right center;
+
+  .arrow {
+      font-size: 16px; /* Smaller arrow size */
   }
-  
-  @keyframes rotate {
-    0% {
-      transform: rotateY(0deg);
-    }
-    100% {
-      transform: rotateY(360deg);
-    }
+
+  img {
+      max-height: 300px; /* Further limit height */
   }
-  
-  .audio-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
+}
